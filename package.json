@@ -1,0 +1,87 @@
+{
+  "name": "claude-commit",
+  "displayName": "Claude Commit",
+  "description": "AI-powered conventional commit message generation using Claude via Claude Code CLI",
+  "version": "1.0.0",
+  "author": "Prokhor Orlov",
+  "publisher": "prokhor-orlov",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prokhororlov/claude-commit"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "SCM Providers"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "workspaceContains:.git"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "claude-commit.generate",
+        "title": "Generate Commit Message (Claude)",
+        "icon": {
+          "light": "icons/claude-light.svg",
+          "dark": "icons/claude-dark.svg"
+        },
+        "category": "Claude"
+      },
+      {
+        "command": "claude-commit.stop",
+        "title": "Stop Claude Generation",
+        "icon": {
+          "light": "icons/stop-light.svg",
+          "dark": "icons/stop-dark.svg"
+        },
+        "category": "Claude"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "claude-commit.generate",
+          "group": "navigation@99",
+          "when": "scmProvider == git && !claudeGenerating"
+        },
+        {
+          "command": "claude-commit.stop",
+          "group": "navigation@99",
+          "when": "scmProvider == git && claudeGenerating"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Commit",
+      "properties": {
+        "claudeCommit.model": {
+          "type": "string",
+          "default": "haiku",
+          "enum": ["haiku", "sonnet", "opus"],
+          "description": "Claude model to use for commit generation"
+        },
+        "claudeCommit.claudePath": {
+          "type": "string",
+          "default": "claude",
+          "description": "Path to claude CLI executable"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {}
+}
