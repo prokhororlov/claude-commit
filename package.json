@@ -2,7 +2,7 @@
   "name": "claude-commit",
   "displayName": "Claude Commit",
   "description": "AI-powered conventional commit message generation using Claude via Claude Code CLI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Prokhor Orlov",
   "publisher": "prokhor-orlov",
   "license": "MIT",
@@ -62,7 +62,11 @@
         "claudeCommit.model": {
           "type": "string",
           "default": "haiku",
-          "enum": ["haiku", "sonnet", "opus"],
+          "enum": [
+            "haiku",
+            "sonnet",
+            "opus"
+          ],
           "description": "Claude model to use for commit generation"
         },
         "claudeCommit.claudePath": {
