@@ -2,4 +2,5 @@ src/
 node_modules/
 .gitignore
 tsconfig.json
-benchmark.sh
+out/**/*.d.ts
+out/**/*.js.map

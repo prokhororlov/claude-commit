@@ -1,3 +1,7 @@
 out/
 node_modules/
 *.vsix
+.env
+.env.*
+.DS_Store
+Thumbs.db
